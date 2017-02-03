@@ -95,6 +95,28 @@
     <Content Include="Script\jquery-1.10.2.min.js" />
     <Content Include="Script\jquery.vticker.min.js" />
     <Content Include="Web.config" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\add.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\adv.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\book.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\cate.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\cateedit.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\column.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\css\admin.css" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\css\pintuer.css" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\images\11.jpg" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\images\bg.jpg" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\images\passcode.jpg" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\images\tmbg-white.png" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\images\y.jpg" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\index.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\info.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\js\jquery.js" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\js\pintuer.js" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\list.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\login.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\page.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\pass.html" />
+    <Content Include="蓝色精美简洁MUI后台管理模板\tips.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
