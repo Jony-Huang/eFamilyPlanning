@@ -131,6 +131,7 @@
     <Content Include="Ashx\Code.ashx" />
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Login\Index2.cshtml" />
+    <Content Include="Areas\Admin\Views\Login\Index3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -22,9 +22,9 @@ namespace eFamilyPlanning.Repositories
             StringBuilder stb = new StringBuilder();
             stb.Append("SELECT m.*,r.[Description] FROM [User] AS u INNER JOIN UserRole AS ur ON u.ID=ur.UID ");
             stb.Append("INNER JOIN [Role] AS r ON ur.RID=r.ID INNER JOIN RoleMenu AS rm ");
-            stb.Append("ON rm.RID=r.ID INNER JOIN Menu AS m ON m.ID=rm.MID WHERE u.Name=@name");
+            stb.Append("ON rm.RID=r.ID INNER JOIN Menu AS m ON m.ID=rm.MID WHERE u.Name=@0");
 
-            return  db.Query<Menu>(stb.ToString(), new SqlParameter("@name", name)).ToList();
+            return  db.Query<Menu>(stb.ToString(), new SqlParameter("@0", name)).ToList();
         }
     }
 }

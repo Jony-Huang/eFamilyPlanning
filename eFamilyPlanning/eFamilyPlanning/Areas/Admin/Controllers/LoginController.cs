@@ -13,6 +13,11 @@ namespace eFamilyPlanning.Areas.Admin.Controllers
         private UnitRepository unitRepository = new UnitRepository();
 
 
+        public ActionResult Index3()
+        {
+            return View();
+        }
+
         [RoleAuthorize]
         public ActionResult Index2()
         {
