@@ -160,6 +160,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="蓝色精美简洁MUI后台管理模板\天柱县人口网设计方案.doc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
