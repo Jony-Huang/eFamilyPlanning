@@ -19,7 +19,7 @@ namespace eFamilyPlanning
             if (!filterContext.RequestContext.HttpContext.Request.IsAuthenticated) //未登录
             {
                 isAuth = false;
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", Action = "Index", returnUrl = filterContext.HttpContext.Request.Url, returnMessage = "您未登录" }));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", Action = "Login", returnUrl = filterContext.HttpContext.Request.Url, returnMessage = "您未登录" }));
                 return;
             }
             else //已经登录
@@ -50,7 +50,7 @@ namespace eFamilyPlanning
 
             if (!isAuth)
             {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", Action = "Index3", returnUrl = filterContext.HttpContext.Request.Url, returnMessage = "您无权查看" }));
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", Action = "Index", returnUrl = filterContext.HttpContext.Request.Url, returnMessage = "您无权查看" }));
                 return;
             }
             else

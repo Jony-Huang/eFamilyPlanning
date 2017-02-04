@@ -26,5 +26,15 @@ namespace eFamilyPlanning.Repositories
 
             return  db.Query<Menu>(stb.ToString(), new SqlParameter("@0", name)).ToList();
         }
+
+        public IEnumerable<dynamic> GetMenuAll()
+        {
+            StringBuilder stb = new StringBuilder();
+            stb.Append("SELECT m.*,r.[Description] FROM [User] AS u INNER JOIN UserRole AS ur ON u.ID=ur.UID ");
+            stb.Append("INNER JOIN [Role] AS r ON ur.RID=r.ID INNER JOIN RoleMenu AS rm ");
+            stb.Append("ON rm.RID=r.ID INNER JOIN Menu AS m ON m.ID=rm.MID");
+
+            return db.Query<dynamic>(stb.ToString()).ToList();
+        }
     }
 }

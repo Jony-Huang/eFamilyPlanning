@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Newtonsoft.Json;
 
 namespace eFamilyPlanning.Areas.Admin.Controllers
 {
@@ -13,42 +14,75 @@ namespace eFamilyPlanning.Areas.Admin.Controllers
         private UnitRepository unitRepository = new UnitRepository();
 
 
+        public string MvcStringAjax(FormCollection fc)
+        {
+            string username = fc["username"];
+            //var json = Json(unitRepository.LoginRepository.GetMenuAll());
+            var json = JsonConvert.SerializeObject(unitRepository.LoginRepository.GetMenuAll());
+            return json;
+        }
+        public JsonResult MvcJsonResultAjax(FormCollection fc)
+        {
+            string username = fc["username"];
+            var json = Json(unitRepository.LoginRepository.GetMenu(username));
+            return json;
+        }
+
+        public ActionResult WelCome()
+        {
+            return View();
+        }
+
         public ActionResult Index3()
         {
             return View();
         }
 
-        [RoleAuthorize]
+        
         public ActionResult Index2()
         {
             return View();
         }
 
         // GET: Admin/Login
-        public ActionResult Index()
+        [RoleAuthorize]
+        public ActionResult Index() //后台管理首页
         {
+            return View();
+        }
+        public ActionResult Login() //登录页面
+        {
+            var returnUrl = Request["returnUrl"];
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                return Redirect(Request["returnUrl"]);
+
+                if (!string.IsNullOrWhiteSpace(returnUrl))
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    return Redirect("/Admin/Login/Index");
+                }
+                
             }
-            TempData["returnUrl"] = Convert.ToString(Request["returnUrl"]);
+            TempData["returnUrl"] = Convert.ToString(returnUrl);
             return View();
         }
 
-
-        [HttpPost]
-        public ActionResult Index(FormCollection fc)
+        public int LoginSubmit(FormCollection fc)
         {
             //1 获取表单数据
             string username = fc["username"];
             string password = fc["password"];
-            string code = fc["code"];
             var returnUrl = Convert.ToString(TempData["returnUrl"]);
+            var result = 0;
 
             //2 验证用户
 
             //var user = db.User.Where(u => u.Name == name && u.PassWord == pwd).FirstOrDefault();
             var user = unitRepository.LoginRepository.Get(filter: u => u.Name == username && u.PassWord == password).FirstOrDefault();
+            unitRepository.Dispose();
             if (user != null)
             {
                 //1、创建认证信息 Ticket 
@@ -70,23 +104,29 @@ namespace eFamilyPlanning.Areas.Admin.Controllers
 
                 //FormsAuthentication.SetAuthCookie(name, true); //48小时有效
                 FormsAuthentication.SetAuthCookie(username, false); //会话cookie
-                if (!string.IsNullOrWhiteSpace(returnUrl))
-                {
-                    return Redirect(returnUrl);
-                }
-                else
-                {
-                    return Redirect("~");
-                }
+                //if (!string.IsNullOrWhiteSpace(returnUrl))
+                //{
+                //    return Redirect(returnUrl);
+                //}
+                //else
+                //{
+                //    return Redirect("/Admin/Login/Index");
+                //}
+                result = 1;
             }
             else
             {
                 TempData["returnUrl"] = returnUrl;
-                TempData["Message"] = "用户名或密码错误";
+                result = 0;
             }
-            unitRepository.Dispose();
+            return result;
+            //return View();
+        }
 
-            return View();
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return Redirect(Request.UrlReferrer.ToString());
         }
     }
 }

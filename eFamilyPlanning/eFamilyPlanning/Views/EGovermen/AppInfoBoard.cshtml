@@ -1,0 +1,129 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AppInfoBoard</title>
+    <link href="~/Css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title"><span class="glyphicon glyphicon-align-justify"></span> &nbsp;内容列表</h3>
+        </div>
+        <div class="panel-body">
+            <div id="div_Status" class=" btn-group" role="group" style="display:inline;" aria-label="...">
+                <button type="button" class="btn btn-default btn-success">全部</button>
+                <button type="button" class="btn btn-default">处理中</button>
+                <button type="button" class="btn btn-default">已通过</button>
+                <button type="button" class="btn btn-default">未通过</button>
+                <button type="button" class="btn btn-default">已发证</button>
+            </div>
+
+            @*<div class="input-group" style="width:300px; margin-left:500px;">
+                                <div id="myDropdown" class="input-group-btn">
+                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">请选择状态<span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"> 全部 </a></li>
+                            <li><a href="#">处理中</a></li>
+                            <li><a href="#">已通过</a></li>
+                            <li><a href="#">未通过</a></li>
+                            @*<li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                        </ul>
+                        <select class="form-control btn-info" style="width:160px; display:inline; border-radius:4px 0 0 4px;">
+                            <option value="">请选择状态</option>
+                            <option value="open_rate"> 全部 </option>
+                            <option value="click_rate">处理中</option>
+                            <option value="click_rate">已通过</option>
+                            <option value="click_rate">未通过</option>
+                        </select>
+                                </div><!-- /btn-group -->
+
+                            </div>
+                        </div>*@
+            <div class="input-group" style="width:300px; margin-left:500px;">
+                <input type="text" class="form-control" placeholder="请输入您要搜索的身份证号码">
+                <span class="input-group-btn">
+                    <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+            <br />
+            <table class="table table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <td>受理编号</td>
+                        <td>姓名</td>
+                        <td>申请日期</td>
+                        <td>办结日期</td>
+                        <td>婚育证号</td>
+                        <td>受理部门</td>
+                        <td>办理状态</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>雷流证第1号</td>
+                        <td>余春英</td>
+                        <td>2014-08-31</td>
+                        <td>2014-09-01</td>
+                        <td>522634200140842</td>
+                        <td>望丰乡人口和计划生育办公室</td>
+                        <td>处理完毕</td>
+                    </tr>
+                    <tr>
+                        <td>雷流证第1号</td>
+                        <td>余春英</td>
+                        <td>2014-08-31</td>
+                        <td>2014-09-01</td>
+                        <td>522634200140842</td>
+                        <td>望丰乡人口和计划生育办公室</td>
+                        <td>处理完毕</td>
+                    </tr>
+                    <tr>
+                        <td>雷流证第1号</td>
+                        <td>余春英</td>
+                        <td>2014-08-31</td>
+                        <td>2014-09-01</td>
+                        <td>522634200140842</td>
+                        <td>望丰乡人口和计划生育办公室</td>
+                        <td>处理完毕</td>
+                    </tr>
+                    <tr>
+                        <td>雷流证第1号</td>
+                        <td>余春英</td>
+                        <td>2014-08-31</td>
+                        <td>2014-09-01</td>
+                        <td>522634200140842</td>
+                        <td>望丰乡人口和计划生育办公室</td>
+                        <td>处理完毕</td>
+                    </tr>
+                    <tr>
+                        <td>雷流证第1号</td>
+                        <td>余春英</td>
+                        <td>2014-08-31</td>
+                        <td>2014-09-01</td>
+                        <td>522634200140842</td>
+                        <td>望丰乡人口和计划生育办公室</td>
+                        <td>处理完毕</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script>
+        $(function () {
+            $('#div_Status').on('click', 'button', function () {
+                $(this).siblings('button').removeClass('btn-success');
+                $(this).addClass('btn-success');
+            })
+        })
+    </script>
+</body>
+</html>

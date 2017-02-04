@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index2</title>
+    <link href="~/Css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div> 
+        这里发送ajax 请求
+        <br />
+        <input type="button" id="MvcStringAjax" value="MvcStringAjax" />
+        <br/>
+        <br/>
+        <input type="button" id="MvcJsonResultAjax" value="MvcJsonResultAjax" />
+        <br /><br />
+        <table id="tab" class="table table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Action</td>
+                    <td>ActionName</td>
+                    <td>Controller</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+    <script>
+        $(function () {
+            $('#MvcStringAjax').on('click', function () {
+                $.post('MvcStringAjax', { username: 'hjf' }, function (result) {
+                    console.log(result);
+                    result = $.parseJSON(result);
+                    var tr = ''
+                    for (var i = 0; i < result.length; i++) {
+                        tr += '<tr><td>' + result[i].ID + '</td><td>' + result[i].Action + '</td><td>' + result[i].ActionName + '</td><td>' + result[i].Controller + '</td></tr>';
+                    }
+                    $('#tab tbody').empty().html(tr);
+                })
+            });
+
+
+            $('#MvcJsonResultAjax').on('click', function () {
+                $.post('MvcJsonResultAjax', { username: 'hjf' }, function (result) {
+                    console.log(result);
+                    var tr = ''
+                    for (var i = 0; i < result.length; i++) {
+                        tr += '<tr><td>' + result[i].ID + '</td><td>' + result[i].Action + '</td><td>' + result[i].ActionName + '</td><td>' + result[i].Controller + '</td></tr>';
+                    }
+                    $('#tab tbody').empty().html(tr);
+                })
+            })
+        })
+    </script>
+    
+</body>
+</html>
