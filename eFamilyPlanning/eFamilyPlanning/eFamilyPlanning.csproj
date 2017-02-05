@@ -102,6 +102,7 @@
     <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\login.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\Login\Index2.cshtml" />
@@ -114,6 +115,8 @@
     <Content Include="Areas\Admin\Views\Certificate\FormPrintIndex.cshtml" />
     <Content Include="Areas\Admin\Views\Certificate\PhotoPrintIndex.cshtml" />
     <Content Include="Areas\Admin\Views\Certificate\PhotoPrintDetial.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\InsertUser.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Comm.js" />
     <Content Include="Scripts\jqPaginator.js" />
@@ -149,6 +152,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CertificateController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Ashx\Admin.ashx.cs">
       <DependentUpon>Admin.ashx</DependentUpon>
     </Compile>

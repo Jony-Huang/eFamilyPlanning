@@ -103,7 +103,10 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script>
         $(function () {
-
+            $('#div_Status').on('click', 'button', function () {
+                $(this).siblings('button').removeClass('btn-success');
+                $(this).addClass('btn-success');
+            })
         });//ready end
     </script>
 

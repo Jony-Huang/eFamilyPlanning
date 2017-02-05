@@ -21,7 +21,8 @@ ul,li{ list-style-type:none;}
 .head-l .bg-blue:hover{ background-color:#03b6fd;}
 .leftnav{width:180px; height:100%; position:fixed; top:70px; left:0px;}
 /*.leftnav-title { height:50px; background:url(../images/bg.jpg) no-repeat 0 -1000px;  color:#FFF; padding-left:22px;  font-size:14px; line-height:50px;}*/
-.leftnav-title { height:50px; background-color:#1284C3;  color:#FFF; padding-left:22px;  font-size:14px; line-height:50px;}
+/*.leftnav-title { height:50px; background-color:#1284C3;  color:#FFF; padding-left:22px;  font-size:14px; line-height:50px;}*/
+.leftnav-title { height:41px; background-color:#1284C3;  color:#FFF; padding-left:22px;  font-size:14px; line-height:41px;}
 .leftnav-title span{ margin-right:10px;}
 .leftnav h2{ padding:10px 0 10px 22px; transition:all .1s ease-in-out; display:block; cursor:pointer; font-weight:bold; font-size:14px; border-top:1px solid #b5cfd9;}
 .leftnav h2.on{ color:#09c;}
