@@ -13,6 +13,11 @@
 <body>
     <div> 
         网上政务首页
+
+        @using (Html.BeginForm("Index", "EGovermen", FormMethod.Post)) 
+        {
+            <input type="submit" value="导出WORD" /> 
+        }
     </div>
 </body>
 </html>
