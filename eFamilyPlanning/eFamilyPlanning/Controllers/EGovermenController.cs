@@ -20,7 +20,7 @@ namespace eFamilyPlanning.Controllers
         [HttpPost]
         public void Index(FormCollection fc)
         {
-            string filepath = Server.MapPath("/word/xmxx.docx");
+            string filePath = Server.MapPath("/Template/Word/w1.docx");
             //using (MemoryStream ms = NPOIHelp.ExportDoc(filepath))
             //{
             //    Response.ContentType = "application/vnd.ms-word";
@@ -32,7 +32,7 @@ namespace eFamilyPlanning.Controllers
             //    Response.End();
             //}
             //return View();
-            using (MemoryStream ms = NPOIHelp.ExportDoc(filepath))
+            using (MemoryStream ms = NPOIHelp.ExportWord(filePath))
             {
                 string fileName = "123" + DateTime.Now.ToString();
                 if (Request.Browser.Browser == "IE")
@@ -89,6 +89,31 @@ namespace eFamilyPlanning.Controllers
         //    HttpContext.Current.Response.BinaryWrite(byteArray);
         //    HttpContext.Current.Response.End();
         //}
+
+
+        public ActionResult ToExcel()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public void ToExcel(FormCollection fc)
+        {
+            string filePath = Server.MapPath("/Template/Excel/e1.xlsx");
+            using (MemoryStream ms = NPOIHelp.ExportExcel(filePath))
+            {
+                string fileName = "123" + DateTime.Now.ToString();
+                if (Request.Browser.Browser == "IE")
+                    fileName = HttpUtility.UrlEncode(fileName);
+                Response.Clear();
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document; name=" + fileName;
+                //Response.ContentType = "application/vnd.ms-word; name=" + fileName;
+                Response.AddHeader("content-disposition", "attachment;filename=" + fileName + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
+                Response.BinaryWrite(ms.ToArray());
+                Response.End();
+            }
+        }
+
 
         //表单申请页面显示
         public ActionResult AppForm()

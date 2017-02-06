@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ToExcel</title>
+</head>
+<body>
+    @using (Html.BeginForm("ToExcel", "EGovermen", FormMethod.Post))
+    {
+        <input type="submit" value="导出Excel" />
+    }
+</body>
+</html>
