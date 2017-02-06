@@ -120,6 +120,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Css\bootstrap.min.css" />
+    <Content Include="Css\Jcrop.min.css" />
     <Content Include="Css\login.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -139,9 +140,18 @@
     <Content Include="Areas\Admin\Views\User\InsertUser.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Comm.js" />
+    <Content Include="Scripts\Jcrop.min.js" />
     <Content Include="Scripts\jqPaginator.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\JsFileAPI\FileAPI.flash.camera.swf" />
+    <Content Include="Scripts\JsFileAPI\FileAPI.flash.image.swf" />
+    <Content Include="Scripts\JsFileAPI\FileAPI.flash.swf" />
+    <Content Include="Scripts\JsFileAPI\FileAPI.html5.js" />
+    <Content Include="Scripts\JsFileAPI\FileAPI.html5.min.js" />
+    <Content Include="Scripts\JsFileAPI\FileAPI.js" />
+    <Content Include="Scripts\JsFileAPI\FileAPI.min.js" />
+    <Content Include="Scripts\JsFileAPI\jquery.fileapi.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
     <Content Include="蓝色精美简洁MUI后台管理模板\add.html" />
@@ -213,6 +223,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\EGovermen\AppInfoBoard.cshtml" />
     <Content Include="Views\EGovermen\ToExcel.cshtml" />
+    <Content Include="Views\EGovermen\UploadIMG.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
