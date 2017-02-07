@@ -22,6 +22,12 @@ namespace eFamilyPlanning.Controllers
             return View();
         }
 
+
+        public ActionResult UploadIMG2()
+        {
+            return View();
+        }
+
         [HttpPost]
         public void Index(FormCollection fc)
         {

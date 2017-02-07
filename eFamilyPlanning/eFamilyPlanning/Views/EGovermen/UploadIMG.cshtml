@@ -10,16 +10,17 @@
     <meta name="viewport" content="width=device-width">
     <link href="~/Css/Jcrop.min.css" rel="stylesheet" />
     <link href="~/Css/bootstrap.min.css" rel="stylesheet" />
-    
+
+    <link href="~/Css/sitelogo.css" rel="stylesheet" />
     <style>
         .upload-btn {
-            width: 130px;
-            height: 25px;
+            width: 96px;
+            height: 35px;
             overflow: hidden;
             position: relative;
-            border: 3px solid #06c;
-            border-radius: 5px;
-            background: #0cf;
+            /*border: 3px solid #06c;*/
+            border-radius: 4px;
+            /*background: #0cf;*/
         }
 
             .upload-btn:hover {
@@ -27,7 +28,7 @@
             }
 
         .upload-btn__txt {
-            z-index: 1;
+            z-index: 998;
             position: relative;
             color: #fff;
             font-size: 18px;
@@ -38,37 +39,66 @@
         }
 
         .upload-btn input {
+            width: 96px;
+            height: 35px;
             top: -10px;
-            right: -40px;
-            z-index: 2;
+            right: -10px;
+            z-index: 999;
             position: absolute;
             cursor: pointer;
             opacity: 0;
             filter: alpha(opacity=0);
-            font-size: 50px;
         }
+
+}
     </style>
 
 </head>
 <body>
 
-    <div>
-        <!-- "js-fileapi-wrapper" -- required class -->
-        <div class="js-fileapi-wrapper upload-btn" id="choose">
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">开始演示模态框</button>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:1000px;margin-left:-200px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+                </div>
+                <div class="modal-body" style="height:auto;">
+                    <div style="margin:10px;">
+                        <label for="avatarInput" style="line-height: 35px; width:100px;">图片上传</label>
+                        <!-- "js-fileapi-wrapper" -- required class -->
+                        <div class="js-fileapi-wrapper upload-btn" id="choose" style=" display:inline;">
 
-            <input name="files" type="file" multiple />
-            <button id="btn">上传</button>
-        </div>
-        <div id="images">
+                            <input name="files" type="file" multiple />
+                            @*<button id="btn" class="btn btn-success">上传</button>*@
 
-            <p style="margin-top: 40px;"></p>
+                            <label id="avatarInput" class="btn btn-danger">请选择图片</label>
+                        </div>
+                        <div id="images">
 
-            <div id="img2"></div>
+                            <p style="margin-top: 40px;"></p>
 
-            <div id="img3"></div>
-        </div>
+                            <div id="img2" class="avatar-wrapper" style="float:left; width:700px; "></div>
 
+                            <div id="img3"  style="float:right; margin-left:10px; border:1px solid #ddd; width:100px; height:100px;"></div>
+
+                            
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交更改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
     </div>
+
+
+    
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/Jcrop.min.js"></script>
@@ -82,7 +112,6 @@
 
 
         FileAPI.event.on(el, 'change', function (evt) {
-            alert(123);
       var files = FileAPI.getFiles(evt); // Retrieve file list
 
       FileAPI.filterFiles(files, function (file, info){
@@ -109,10 +138,10 @@
           FileAPI.getInfo(file, function (err, info) {  //get image ratio
               if (!err) {
                 if (info.width > info.height) {
-                  ratio = info.width / 500;
+                  ratio = info.width / 400;
                 }
                 else {
-                  ratio = info.height / 500;
+                  ratio = info.height / 400;
                 }
               }
             });
@@ -144,7 +173,7 @@
                 });
                   $('#btn').on('click',function(){
                         FileAPI.upload({
-                        url: '/testUpFile/upFile',
+                            url: '/EGovermen/upFile',
 
                           files: { images: img1 },
                           progress: function (evt){ /* ... */ },

@@ -149,8 +149,11 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Css\bootstrap.min.css" />
+    <Content Include="Css\cropper.min.css" />
+    <Content Include="Css\font-awesom.css" />
     <Content Include="Css\Jcrop.min.css" />
     <Content Include="Css\login.css" />
+    <Content Include="Css\sitelogo.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -170,6 +173,7 @@
     <Content Include="bin\eFamilyPlanning.dll.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Comm.js" />
+    <Content Include="Scripts\cropper.min.js" />
     <Content Include="Scripts\Jcrop.min.js" />
     <Content Include="Scripts\jqPaginator.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -183,6 +187,7 @@
     <Content Include="Scripts\JsFileAPI\FileAPI.min.js" />
     <Content Include="Scripts\JsFileAPI\jquery.fileapi.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\sitelogo.js" />
     <Content Include="Web.config" />
     <Content Include="蓝色精美简洁MUI后台管理模板\add.html" />
     <Content Include="蓝色精美简洁MUI后台管理模板\adv.html" />
@@ -254,6 +259,7 @@
     <Content Include="Views\EGovermen\AppInfoBoard.cshtml" />
     <Content Include="Views\EGovermen\ToExcel.cshtml" />
     <Content Include="Views\EGovermen\UploadIMG.cshtml" />
+    <Content Include="Views\EGovermen\UploadIMG2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
