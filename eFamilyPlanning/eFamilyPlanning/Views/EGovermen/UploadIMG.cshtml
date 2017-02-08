@@ -61,44 +61,40 @@
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content" style="width:1000px;margin-left:-200px;">
+            <div id="div_MC" class="modal-content" style="margin-left:-200px;">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+                    <h4 class="modal-title" id="myModalLabel">上传图片</h4>
                 </div>
                 <div class="modal-body" style="height:auto;">
-                    <div style="margin:10px;">
+                    <div style="margin:10px; margin-top:0;">
                         <label for="avatarInput" style="line-height: 35px; width:100px;">图片上传</label>
                         <!-- "js-fileapi-wrapper" -- required class -->
                         <div class="js-fileapi-wrapper upload-btn" id="choose" style=" display:inline;">
 
                             <input name="files" type="file" multiple />
-                            @*<button id="btn" class="btn btn-success">上传</button>*@
 
-                            <label id="avatarInput" class="btn btn-danger">请选择图片</label>
+                            <label id="avatarInput" class="btn btn-success">请选择图片</label>
+                            
                         </div>
                         <div id="images">
-
-                            <p style="margin-top: 40px;"></p>
-
+                            <p></p>
+                            <span id="sp_SeTip" class="help-block" data-content="请用鼠标在图片上裁剪" data-toggle="popover" data-placement="top"></span>
                             <div id="img2" class="avatar-wrapper" style="float:left;"></div>
-
-                            <div id="img3" style="float:left; margin-left:10px; border:1px solid #ddd; width:100px; height:100px;"></div>
-
+                            
+                            <div id="img3" style="float:left; margin-left:10px; border:1px solid #ddd; display:none; "></div>
 
                         </div>
                         <div style="clear:both;"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">提交更改</button>
+                    <button id="btn_Close" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="btn_Save" type="button" class="btn btn-success">保存</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal -->
     </div>
-
-
 
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -108,6 +104,13 @@
     <script>window.FileAPI = { staticPath: '/Scripts/JsFileAPI/' };</script>
     <script src="~/Scripts/JsFileAPI/FileAPI.min.js"></script>
     <script>
+        $(function () {
+            $('#btn_Close').on('click', function () {
+                $('#img2,#img3').empty();
+                $('#img2').css({ 'padding': 0 });
+            });
+        });// ready --end--
+
         var el = $('input').get(0);
 
         FileAPI.event.on(el, 'change', function (evt) {
@@ -132,56 +135,81 @@
                     var img0 = FileAPI.Image(file);
                     var img1 = FileAPI.Image(file);
                     var ratio = 0;
+                    var isNeedSelect, isCanSave = false;
                     FileAPI.getInfo(file, function (err, info) {  //get image ratio
-                        var whRatio, newPicW, whRatioDe = 295 / 413;
+                        var whRatio, newPicW, newPicH, whRatioDe = 295 / 413;
                         if (!err) {
                             whRatio = info.width / info.height;//被选中的图片宽高比
-                            newPicW = 500 * whRatioDe, newPicH = 500;//新图片的宽高
+                            newPicW = 800 * whRatioDe, newPicH = 800;//新图片的宽高
                             if (info.width > info.height) {
                                 ratio = info.width / newPicW;
-                                alert(1)
                             }
                             else {
                                 ratio = info.height / newPicH;
-                                alert(2)
                             }
                         }
                         
                         //---------裁剪插件-----------------------s----------------------------
-
-                        img0.resize(newPicW, newPicH, 'max').get(function (err, img) { //把被选中的图片重设宽高并填充到$('#img2')中显示
-                            $('#img2').empty().css({ 'padding': '10px' });
+                        if (info.width == 295 && info.height == 413) {
+                            newPicW = info.width;
+                            newPicH = info.height;
+                            isNeedSelect = false;
+                            isCanSave = true;
+                        }
+                        else{
+                            isNeedSelect=true;
+                        }
+                        img0.resize(newPicW, newPicH, 'width').get(function (err, img) { //把被选中的图片重设宽高并填充到$('#img2')中显示
+                            $('#img2').empty().css({ 'padding': '10px'});
                             $('#img2').append($(img));
-                            if (info.width != 295 && info.height != 413) {
+                            $('#img3').empty();
+                            $('#div_MC').css({ 'width': newPicW + 70 });
+                            if (isNeedSelect) {
+                                $('#div_MC').css({ 'width': newPicW + 500 });
+                                var img2ChW = parseInt($('#img2').css('width'));
+                                alert(img2ChW)
+                                if ((img2ChW) > 30) {
+                                    $('#sp_SeTip').popover('show');
+                                }
                                 $('#img2').children().Jcrop({ //注册裁剪插入参数和事件
                                     aspectRatio: 295 / 413,
                                     bgColor: 'jcrop-dark',
                                     onSelect: function (c) {
+                                        $('#sp_SeTip').popover('hide');
                                         img1.matrix.sx = c.x * ratio;
                                         img1.matrix.sy = c.y * ratio;
                                         img1.matrix.sw = c.w * ratio;
                                         img1.matrix.sh = c.h * ratio;
-                                        //img1.matrix.dw = 100;
-                                        //img1.matrix.dh = 100 * whRatio;
                                         img1.matrix.dw = 295;
                                         img1.matrix.dh = 413;
                                         img1.get(function (err, img) {
-                                            $('#img3').html($(img));
+                                            $('#img3').empty().html($(img)).show();
                                         });
+                                        isCanSave = true;
                                     }
                                 });//$('#img2').children().Jcrop({ //注册裁剪插入参数和事件  end
-                            }
-
+                            } 
                         });
 
-                        $('#btn').on('click', function () {
+                        $('#btn_Save').on('click', function () {
+                            if (isNeedSelect && !isCanSave) {
+                                alert('请用鼠标在图片上裁剪');
+                                return;
+                            }
                             FileAPI.upload({
-                                url: '/EGovermen/upFile',
+                                url: '/Ashx/Admin.ashx?action=uploadImg',
                                 files: { images: img1 },
                                 progress: function (evt) { /* ... */ },
                                 complete: function (err, xhr) { /* ... */
                                     //alert(xhr.responseText);
-
+                                    if (!err) {
+                                        var result = xhr.responseText;
+                                        alert('上传成功！');
+                                        $('#btn_Close').trigger('click');
+                                    }
+                                    else{
+                                        console.log(err);
+                                    }
                                 }
                             });
 

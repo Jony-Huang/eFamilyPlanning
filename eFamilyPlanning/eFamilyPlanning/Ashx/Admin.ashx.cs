@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Web;
 using System.Web.SessionState;
+using System.IO;
 
 namespace eFamilyPlanning.Ashx
 {
@@ -17,6 +18,7 @@ namespace eFamilyPlanning.Ashx
         HttpRequest Request;
         HttpResponse Response;
         HttpSessionState Session;
+        HttpServerUtility Server;
 
         public void ProcessRequest(HttpContext context)
         {
@@ -24,14 +26,30 @@ namespace eFamilyPlanning.Ashx
             Request = context.Request;
             Response = context.Response;
             Session = context.Session;
+            Server = context.Server;
             var action = Request["action"];
             switch (action)
             {
                 case "createCode": CreateCode(); break;
                 case "getSessionCode": GetSessionCode(); break;
+                case "uploadImg": UploadImg(); break;
                 default:
                     break;
             }
+
+        }
+
+        private void UploadImg()
+        {
+            var file = Request.Files[0];
+            string fileType, fileDir = Server.MapPath("~/Upload/Images/");
+            if(!Directory.Exists(fileDir))
+            {
+                Directory.CreateDirectory(fileDir);
+            }
+            fileType = file.FileName.Substring((file.FileName.LastIndexOf(".") + 1));
+            file.SaveAs(fileDir + DateTime.Now.ToString("yyyyMMdd_HHhhss") + "." + fileType);
+            Response.Write(1);
 
         }
 

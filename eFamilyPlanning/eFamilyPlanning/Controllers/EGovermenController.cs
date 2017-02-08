@@ -22,6 +22,11 @@ namespace eFamilyPlanning.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult UploadIMG(HttpRequest request)
+        {
+            return View();
+        }
 
         public ActionResult UploadIMG2()
         {
