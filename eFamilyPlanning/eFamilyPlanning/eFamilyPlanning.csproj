@@ -260,6 +260,7 @@
     <Content Include="Views\EGovermen\ToExcel.cshtml" />
     <Content Include="Views\EGovermen\UploadIMG.cshtml" />
     <Content Include="Views\EGovermen\UploadIMG2.cshtml" />
+    <Content Include="Views\EGovermen\AppForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
