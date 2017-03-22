@@ -1,0 +1,5 @@
+G:\github\eFamilyPlanning\eFamilyPlanning\eFamilyPlanning\bin\eFamilyPlanning.dll.config
+G:\github\eFamilyPlanning\eFamilyPlanning\eFamilyPlanning\bin\eFamilyPlanning.dll
+G:\github\eFamilyPlanning\eFamilyPlanning\eFamilyPlanning\bin\eFamilyPlanning.pdb
+G:\github\eFamilyPlanning\eFamilyPlanning\eFamilyPlanning\obj\Debug\eFamilyPlanning.dll
+G:\github\eFamilyPlanning\eFamilyPlanning\eFamilyPlanning\obj\Debug\eFamilyPlanning.pdb
