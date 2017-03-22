@@ -11,6 +11,7 @@ namespace Repository
 {
     public class LoginRps<T> : Rps<T> where T : class
     {
+        //HttpSessionState Session = HttpContext.Current.Session;
         private Database db;
         public LoginRps(Database context) : base(context)
         {
@@ -29,6 +30,7 @@ namespace Repository
 
         public IEnumerable<dynamic> GetMenuAll()
         {
+             
             StringBuilder stb = new StringBuilder();
             stb.Append("SELECT m.*,r.[Description] FROM [User] AS u INNER JOIN UserRole AS ur ON u.ID=ur.UID ");
             stb.Append("INNER JOIN [Role] AS r ON ur.RID=r.ID INNER JOIN RoleMenu AS rm ");
