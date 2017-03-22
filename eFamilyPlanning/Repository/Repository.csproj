@@ -46,7 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRps.cs" />
+    <Compile Include="LoginRps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rps.cs" />
+    <Compile Include="UnitRps.cs" />
+    <Compile Include="UserRps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
