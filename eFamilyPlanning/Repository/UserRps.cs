@@ -1,4 +1,5 @@
-﻿using NPoco;
+﻿using Model;
+using NPoco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,10 @@ namespace Repository
             this.db = db;
         }
 
-        //public IEnumerable<User> GetHa()
-        //{
-        //    return context.Query<User>().ToList();
-        //}
+        public IEnumerable<User> GetHa()
+        {
+            return db.Query<User>().ToList();
+        }
     
     }
 }
