@@ -1,5 +1,0 @@
-G:\github\eFamilyPlanning\eFamilyPlanning\Repository\bin\Debug\Repository.dll
-G:\github\eFamilyPlanning\eFamilyPlanning\Repository\bin\Debug\Repository.pdb
-G:\github\eFamilyPlanning\eFamilyPlanning\Repository\bin\Debug\NPoco.dll
-G:\github\eFamilyPlanning\eFamilyPlanning\Repository\obj\Debug\Repository.dll
-G:\github\eFamilyPlanning\eFamilyPlanning\Repository\obj\Debug\Repository.pdb
