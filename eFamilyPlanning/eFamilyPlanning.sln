@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eFamilyPlanning", "eFamilyPlanning\eFamilyPlanning.csproj", "{F13B4E37-70E8-4B99-82E6-9E7C8C54C83E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{887D9FCA-348B-42C0-A208-26E8CD2F4720}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F13B4E37-70E8-4B99-82E6-9E7C8C54C83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F13B4E37-70E8-4B99-82E6-9E7C8C54C83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F13B4E37-70E8-4B99-82E6-9E7C8C54C83E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{887D9FCA-348B-42C0-A208-26E8CD2F4720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887D9FCA-348B-42C0-A208-26E8CD2F4720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887D9FCA-348B-42C0-A208-26E8CD2F4720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887D9FCA-348B-42C0-A208-26E8CD2F4720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
