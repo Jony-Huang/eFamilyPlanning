@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    class UserRps<T> : Rps<T> where T : class
+    public class UserRps<T> : Rps<T> where T : class
     {
         private Database db;
         public UserRps(Database db): base(db)

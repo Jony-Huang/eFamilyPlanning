@@ -1,17 +1,19 @@
-﻿using eFamilyPlanning.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Repository;
+using Model;
+
 
 namespace eFamilyPlanning
 {
- 
- public class RoleAuthorizeAttribute : AuthorizeAttribute
+
+    public class RoleAuthorizeAttribute : AuthorizeAttribute
     {
-        private UnitRepository unitRepository = new UnitRepository();
+        private UnitRps unitRps = new UnitRps();
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             var isAuth = false;
@@ -37,8 +39,8 @@ namespace eFamilyPlanning
                         var actionName = filterContext.ActionDescriptor.ActionName;
 
                         //获取当前用户的所有权限
-                        var menu = unitRepository.LoginRepository.GetMenu(name);
-                        unitRepository.Dispose();
+                        var menu = unitRps.LoginRps.GetMenu(name);
+                        unitRps.Dispose();
                         if (menu != null)
                         {
                             isAuth = menu.Any(m => m.Controller == controllerName && m.Action == actionName);

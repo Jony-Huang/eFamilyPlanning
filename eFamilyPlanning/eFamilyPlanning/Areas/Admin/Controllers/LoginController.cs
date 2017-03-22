@@ -1,30 +1,30 @@
-﻿using eFamilyPlanning.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Newtonsoft.Json;
+using Repository;
 
 namespace eFamilyPlanning.Areas.Admin.Controllers
 {
     public class LoginController : Controller
     {
-        private UnitRepository unitRepository = new UnitRepository();
+        private UnitRps unitRps = new UnitRps();
 
 
         public string MvcStringAjax(FormCollection fc)
         {
             string username = fc["username"];
             //var json = Json(unitRepository.LoginRepository.GetMenuAll());
-            var json = JsonConvert.SerializeObject(unitRepository.LoginRepository.GetMenuAll());
+            var json = JsonConvert.SerializeObject(unitRps.LoginRps.GetMenuAll());
             return json;
         }
         public JsonResult MvcJsonResultAjax(FormCollection fc)
         {
             string username = fc["username"];
-            var json = Json(unitRepository.LoginRepository.GetMenu(username));
+            var json = Json(unitRps.LoginRps.GetMenu(username));
             return json;
         }
 
@@ -81,8 +81,8 @@ namespace eFamilyPlanning.Areas.Admin.Controllers
             //2 验证用户
 
             //var user = db.User.Where(u => u.Name == name && u.PassWord == pwd).FirstOrDefault();
-            var user = unitRepository.LoginRepository.Get(filter: u => u.Name == username && u.PassWord == password).FirstOrDefault();
-            unitRepository.Dispose();
+            var user = unitRps.LoginRps.Get(filter: u => u.Name == username && u.PassWord == password).FirstOrDefault();
+            unitRps.Dispose();
             if (user != null)
             {
                 //1、创建认证信息 Ticket 

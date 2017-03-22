@@ -228,19 +228,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Attrib.cs" />
-    <Compile Include="Models\AttribName.cs" />
-    <Compile Include="Models\Menu.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\RoleMenu.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
-    <Compile Include="Repositories\LoginRepository.cs" />
-    <Compile Include="Repositories\Repository.cs" />
-    <Compile Include="Repositories\UnitRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="RoleAuthorizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +265,16 @@
     <Folder Include="Images\" />
     <Folder Include="Template\Excel\" />
     <Folder Include="Template\Word\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{8e24525c-d8d5-4cef-9187-f94e2a438be8}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Repository\Repository.csproj">
+      <Project>{7326ab5a-4d6e-4c48-8e36-c1b0b4aa6d2b}</Project>
+      <Name>Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

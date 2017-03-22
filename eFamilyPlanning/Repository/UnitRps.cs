@@ -1,4 +1,5 @@
-﻿using NPoco;
+﻿using Model;
+using NPoco;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace Repository
     public class UnitRps : IDisposable 
     {
         private Database db;
-        //private UserRepository<User> userRepository;
-        //private LoginRepository<User> loginRepository;
+        private UserRps<User> userRps;
+        private LoginRps<User> loginRps;
 
         public UnitRps()
         {
@@ -19,29 +20,29 @@ namespace Repository
             db.BeginTransaction();
         }
 
-        //public UserRepository<User> UserRepository
-        //{
-        //    get 
-        //    { 
-        //        if(userRepository==null)
-        //        {
-        //            userRepository = new UserRepository<User>(context);
-        //        }
-        //        return userRepository;
-        //    }
-        //}
+        public UserRps<User> UserRps
+        {
+            get
+            {
+                if (userRps == null)
+                {
+                    userRps = new UserRps<User>(db);
+                }
+                return userRps;
+            }
+        }
 
-        //public LoginRepository<User> LoginRepository
-        //{
-        //    get
-        //    {
-        //        if (loginRepository == null)
-        //        {
-        //            loginRepository = new LoginRepository<User>(context);
-        //        }
-        //        return loginRepository;
-        //    }
-        //}
+        public LoginRps<User> LoginRps
+        {
+            get
+            {
+                if (loginRps == null)
+                {
+                    loginRps = new LoginRps<User>(db);
+                }
+                return loginRps;
+            }
+        }
 
 
         public void Save()
