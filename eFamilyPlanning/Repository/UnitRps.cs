@@ -10,7 +10,7 @@ namespace Repository
 {
     public class UnitRps : IDisposable 
     {
-        private Database db;
+        private readonly Database db;
         private UserRps<User> userRps;
         private LoginRps<User> loginRps;
 

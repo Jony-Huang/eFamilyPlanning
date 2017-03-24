@@ -11,17 +11,17 @@ namespace Repository
 {
     public class Rps<T> : IRps<T> where T : class
     {
-        private Database context;
+        private readonly Database db;
         public Rps(Database context)
         {
-            this.context = context;
+            this.db = context;
         }
 
         //public Database Context { get { return this.context; } }
 
         public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryProvider<T>, IQueryProvider<T>> orderBy = null, string includeProperties = "")
         {
-            var query = context.Query<T>();
+            var query = db.Query<T>();
             if (filter != null)
             {
                 query.Where(filter);
@@ -46,22 +46,22 @@ namespace Repository
 
         public void Insert(T t)
         {
-            this.context.Insert<T>(t);
+            this.db.Insert<T>(t);
         }
 
         public void Delete(object ID)
         {
-            this.context.Delete<T>(ID);
+            this.db.Delete<T>(ID);
         }
 
         public virtual void Delete(T t)
         {
-            context.Delete<T>(t);
+            db.Delete<T>(t);
         }
 
         public void Update(T t)
         {
-            this.context.Update(t);
+            this.db.Update(t);
         }
     }
 }

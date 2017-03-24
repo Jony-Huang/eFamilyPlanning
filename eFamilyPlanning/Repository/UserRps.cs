@@ -10,7 +10,7 @@ namespace Repository
 {
     public class UserRps<T> : Rps<T> where T : class
     {
-        private Database db;
+        private readonly Database db;
         public UserRps(Database db): base(db)
         {
             this.db = db;
