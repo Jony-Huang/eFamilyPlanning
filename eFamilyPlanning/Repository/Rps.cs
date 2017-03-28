@@ -19,7 +19,7 @@ namespace Repository
 
         //public Database Context { get { return this.context; } }
 
-        public IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryProvider<T>, IQueryProvider<T>> orderBy = null, string includeProperties = "")
+        public virtual IEnumerable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryProvider<T>, IQueryProvider<T>> orderBy = null, string includeProperties = "")
         {
             var query = db.Query<T>();
             if (filter != null)
@@ -44,12 +44,12 @@ namespace Repository
             return query.ToList();
         }
 
-        public void Insert(T t)
+        public virtual void Insert(T t)
         {
             this.db.Insert<T>(t);
         }
 
-        public void Delete(object ID)
+        public virtual void Delete(object ID)
         {
             this.db.Delete<T>(ID);
         }
@@ -59,7 +59,7 @@ namespace Repository
             db.Delete<T>(t);
         }
 
-        public void Update(T t)
+        public virtual void Update(T t)
         {
             this.db.Update(t);
         }
