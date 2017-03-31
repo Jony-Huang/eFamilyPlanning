@@ -6,14 +6,23 @@ using System.Web.Mvc;
 using eFamilyPlanning.ComFun;
 using System.IO;
 using System.Text;
+using Repository;
+using Model;
 
 namespace eFamilyPlanning.Controllers
 {
     public class EGovermenController : Controller
     {
+        private readonly UnitRps uRps;
+
+        public EGovermenController(UnitRps u)
+        {
+            uRps = u;
+        }
         // GET: EGovermen
         public ActionResult Index()
         {
+            uRps.Dispose();
             return View();
         }
 

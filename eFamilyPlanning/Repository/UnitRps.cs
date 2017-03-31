@@ -17,6 +17,7 @@ namespace Repository
         public UnitRps()
         {
             db = new Database("NPocoConStr");
+            db.BeginTransaction();
         }
 
         public UserRps<User> UserRps
@@ -42,9 +43,12 @@ namespace Repository
                 return loginRps;
             }
         }
-        public void SaveAndDispose()
+        public void ExecuteAndDispose()
         {
-            db.CompleteTransaction();
+            if (db.Transaction != null)
+            {
+                db.CompleteTransaction();
+            }
             Dispose();
         }
 
